@@ -10,7 +10,7 @@ class bcolors:
 class phrases:
 	greeting = "this is my game. play."
 	buffering = "choosing a word for you..."
-	instructions = "guess a 5 letter word in 5 tries"
+	instructions = "guess a 5 letter word in 6 tries"
 	done = "done! you can start guessing!"
 	guess = "your guess: "
 	lang = "pick a language:"
