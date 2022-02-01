@@ -71,7 +71,7 @@ def cli_UI(options, label):
 def main():
 	print(phrases.greeting + "\nINsTruCtioNs:" + phrases.instructions)
 
-	languages = ["italian", "english"]
+	languages = list(dictionaries.languages.keys())
 	language = languages[cli_UI(languages, phrases.lang)]
 
 	print(phrases.buffering)
