@@ -10,11 +10,13 @@ class bcolors:
 class phrases:
 	greeting = "this is my game. play."
 	buffering = "choosing a word for you..."
-	instructions = "guess a 5 letter word in 6 tries"
+	instructions = "INsTruCtioNs: guess a 5 letter word in 6 tries"
 	done = "done! you can start guessing!"
 	guess = "your guess: "
 	lang = "pick a language:"
 	choice = "you chose"
+	won = "You won! The word was"
+	lost = "Nooo, you lost. The word was"
 
 class dictionaries:
 	languages = {
@@ -69,7 +71,7 @@ def cli_UI(options, label):
 	return choice
 
 def main():
-	print(phrases.greeting + "\nINsTruCtioNs:" + phrases.instructions)
+	print(phrases.greeting + "\n" + phrases.instructions)
 
 	languages = list(dictionaries.languages.keys())
 	language = languages[cli_UI(languages, phrases.lang)]
@@ -93,10 +95,10 @@ def main():
 			print(f"{color}{letter}{bcolors.reset}", end=" ")
 
 		if word == guess:
-			return f"You won! The word was {word}"
+			return f"{phrases.won} {word}"
 
 		print()
 
-	return f"Nooo, you lost. The word was {word}"
+	return f"{phrases.lost} {word}"
 
 print(main())
