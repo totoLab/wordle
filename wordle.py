@@ -16,6 +16,12 @@ class phrases:
 	lang = "pick a language:"
 	choice = "you chose"
 
+class dictionaries:
+	languages = {
+		"italian": "parole.txt",
+		"english": "words.txt"
+	}
+
 def random_line(afile):
 	line = next(afile)
 	for num, aline in enumerate(afile, 2):
@@ -25,10 +31,7 @@ def random_line(afile):
 	return line
 
 def get_random_word(lang):
-	if lang == "italian":
-		word_file = "parole.txt"
-	elif lang == "english":
-		word_file = "words.txt"
+	word_file = dictionaries.languages[lang]
 
 	with open(word_file, "r") as f:
 		word = random_line(f)
