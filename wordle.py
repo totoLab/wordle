@@ -80,13 +80,13 @@ def main():
 		matching_indexes = find_matching_letters(word, guess)
 
 		for i, letter in enumerate(guess):
+			if i not in matching_indexes:
+				color = bcolors.wrong
+			elif letter in word:
+				color = bcolors.maybe
 			if i in matching_indexes:
 				color = bcolors.ok
-			else:
-				color = bcolors.wrong
 
-			if letter in word:
-				color = bcolors.maybe
 			print(f"{color}{letter}{bcolors.reset}", end=" ")
 
 		if word == guess:
