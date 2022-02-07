@@ -1,13 +1,13 @@
 import random
 import string
 
-class bcolors:
+class Bcolors:
 	ok = "\033[1;37;42m"
 	wrong = "\033[1;37;41m"
 	maybe = "\033[1;37;104m"
 	reset = "\033[0m"
 
-class phrases:
+class Phrases:
 	greeting = "this is my game. play."
 	buffering = "choosing a word for you..."
 	instructions = "INsTruCtioNs: guess a 5 letter word in 6 tries"
@@ -18,7 +18,7 @@ class phrases:
 	won = "You won! The word was"
 	lost = "Nooo, you lost. The word was"
 
-class dictionaries:
+class Dictionaries:
 	languages = {
 		"italian": "parole.txt",
 		"english": "words.txt"
@@ -33,7 +33,7 @@ def random_line(afile):
 	return line
 
 def get_random_word(lang):
-	word_file = dictionaries.languages[lang]
+	word_file = Dictionaries.languages[lang]
 
 	with open(word_file, "r") as f:
 		word = random_line(f)
@@ -45,7 +45,7 @@ def take_a_guess():
 	guess = ""
 
 	while len(guess) != 5 or not guess.isalpha():
-		guess = input(phrases.guess)
+		guess = input(Phrases.guess)
 		guess = guess.lower()
 
 	return guess    
@@ -67,38 +67,38 @@ def cli_UI(options, label):
 		choice = input(label)
 	
 	choice = int(choice) - 1
-	print('{} {}'.format(phrases.choice, options[choice]))
+	print('{} {}'.format(Phrases.choice, options[choice]))
 	return choice
 
 def main():
-	print(phrases.greeting + "\n" + phrases.instructions)
+	print(Phrases.greeting + "\n" + Phrases.instructions)
 
-	languages = list(dictionaries.languages.keys())
-	language = languages[cli_UI(languages, phrases.lang)]
+	languages = list(Dictionaries.languages.keys())
+	language = languages[cli_UI(languages, Phrases.lang)]
 
-	print(phrases.buffering)
+	print(Phrases.buffering)
 	word = get_random_word(language)
 
-	print("\n" + phrases.done + "\n")
+	print("\n" + Phrases.done + "\n")
 	for _ in range(6):
 		guess = take_a_guess()
 		matching_indexes = find_matching_letters(word, guess)
 
 		for i, letter in enumerate(guess):
 			if i not in matching_indexes:
-				color = bcolors.wrong
+				color = Bcolors.wrong
 			elif letter in word:
-				color = bcolors.maybe
+				color = Bcolors.maybe
 			if i in matching_indexes:
-				color = bcolors.ok
+				color = Bcolors.ok
 
-			print(f"{color}{letter}{bcolors.reset}", end=" ")
+			print(f"{color}{letter}{Bcolors.reset}", end=" ")
 
 		if word == guess:
-			return f"{phrases.won} {word}"
+			return f"{Phrases.won} {word}"
 
 		print()
 
-	return f"{phrases.lost} {word}"
+	return f"{Phrases.lost} {word}"
 
 print(main())
