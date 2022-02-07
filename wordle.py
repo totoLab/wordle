@@ -12,7 +12,7 @@ class Phrases:
 	instructions = "INsTruCtioNs: guess a 5 letter word in 6 tries"
 	done = "done! you can start guessing!"
 	guess = "your guess: "
-	lang = "pick a language:"
+	lang = "pick a language: "
 	choice = "you chose"
 	won = "You won! The word was"
 	lost = "Nooo, you lost. The word was"
