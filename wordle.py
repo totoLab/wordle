@@ -60,11 +60,11 @@ def take_a_guess(lang):
 		guess = guess.lower()
 
 		if len(guess) != 5:
-			print(InputErrors.length + Phrases.retry)
+			print(InputErrors.length, Phrases.retry)
 		elif not guess.isalpha():
-			print(InputErrors.chars + Phrases.retry)
+			print(InputErrors.chars, Phrases.retry)
 		elif guess not in dictionary:
-			print(InputErrors.dictionary + Phrases.retry)
+			print(InputErrors.dictionary, Phrases.retry)
 		else:
 			ok = False
 
