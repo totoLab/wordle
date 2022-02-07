@@ -1,5 +1,4 @@
 import random
-import string
 
 class Bcolors:
 	ok = "\033[1;37;42m"
