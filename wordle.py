@@ -66,7 +66,7 @@ def cli_ui(options, label):
 		choice = input(label)
 	
 	choice = int(choice) - 1
-	print('{} {}'.format(Phrases.choice, options[choice]))
+	print(f'{Phrases.choice} {options[choice]}')
 	return choice
 
 def main():
