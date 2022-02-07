@@ -30,10 +30,11 @@ def match_chars(input_list, chars):
 
     return words
 
-regex = '^.{5}$'
+regex = '^.{5}$' # only five letter words
 
+raw_file = input("Input file name: ")
 path =  os.path.dirname(os.path.realpath(__file__))
-my_file = path + "/" + "parole_uniche.txt"# sys.argv[0]
+my_file = path + "/" + raw_file
 
 with open(my_file, "r") as f:
     final_list = match_length(f, regex, True)
