@@ -1,5 +1,4 @@
 import re
-import sys
 import os
 
 def match_length(input_list, pattern, delete_newline):
