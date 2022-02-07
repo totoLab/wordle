@@ -57,7 +57,7 @@ def find_matching_letters(word, guess):
 
 	return matching
 
-def cli_UI(options, label):
+def cli_ui(options, label):
 	for i in range(len(options)):
 		print('{})'.format(i + 1), options[i])
 	
@@ -73,7 +73,7 @@ def main():
 	print(Phrases.greeting + "\n" + Phrases.instructions)
 
 	languages = list(Dictionaries.languages.keys())
-	language = languages[cli_UI(languages, Phrases.lang)]
+	language = languages[cli_ui(languages, Phrases.lang)]
 
 	print(Phrases.buffering)
 	word = get_random_word(language)
