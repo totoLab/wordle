@@ -11,3 +11,7 @@ Have fun!
 
 ### Additional requirements
 None
+
+### Original word lists
+- [Italian](https://github.com/napolux/paroleitaliane/blob/master/paroleitaliane/parole_uniche.txt)
+- [English](https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt)
