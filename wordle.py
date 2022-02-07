@@ -16,12 +16,22 @@ class Phrases:
 	choice = "you chose"
 	won = "You won! The word was"
 	lost = "Nooo, you lost. The word was"
+	retry = 'retry'
+
+class InputErrors:
+	length = 'length of guess is not 5.'
+	chars = 'some characters in guess are not alphabetic.'
+	dictionary = 'the guessed word is not in the dictionary.'
 
 class Dictionaries:
 	languages = {
 		"italian": "parole.txt",
 		"english": "words.txt"
 	}
+
+def create_language_set(lang):
+	filename = Dictionaries.languages[lang]
+	return set(map(str.strip, open(filename)))
 
 def random_line(afile):
 	line = next(afile)
@@ -40,12 +50,23 @@ def get_random_word(lang):
 	word = word[:5]
 	return word
 
-def take_a_guess():
+def take_a_guess(lang):
 	guess = ""
+	dictionary = create_language_set(lang)
+	ok = True
 
-	while len(guess) != 5 or not guess.isalpha():
+	while ok:
 		guess = input(Phrases.guess)
 		guess = guess.lower()
+
+		if len(guess) != 5:
+			print(InputErrors.length + Phrases.retry)
+		elif not guess.isalpha():
+			print(InputErrors.chars + Phrases.retry)
+		elif guess not in dictionary:
+			print(InputErrors.dictionary + Phrases.retry)
+		else:
+			ok = False
 
 	return guess    
 
@@ -80,7 +101,7 @@ def main():
 
 	print("\n" + Phrases.done + "\n")
 	for _ in range(6):
-		guess = take_a_guess()
+		guess = take_a_guess(language)
 		matching_indexes = find_matching_letters(word, guess)
 
 		for i, letter in enumerate(guess):
