@@ -59,7 +59,7 @@ def find_matching_letters(word, guess):
 
 def cli_ui(options, label):
 	for i, option in enumerate(options):
-		print('{})'.format(i + 1), option)
+		print(f'{i + 1}) {option}')
 	
 	choice = -1
 	while not str(choice).isnumeric() or int(choice) - 1 not in range(len(options)):
